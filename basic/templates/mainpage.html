@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>mainpage</title>
+    <link rel="stylesheet"  href="{%  static  '/css/style.css'  %}">
+    <h1 style ="text-align:center;color:yellow;font-size:80px"> WELCOME </h1>
+<style>
+.button {
+  background-color: #008CBA;
+  border: none;
+  color: white;
+  left: 30%;
+  padding: 20px;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 20px 10px;
+  cursor: pointer;
+  width:200px;
+}
+.background1{
+background-color: #4CAF50;
+}
+
+.background2{
+background-color: #f44336;
+}
+.background3{
+background-color: yellow;
+ color: red;
+ position: relative;
+  left: 38%;
+}
+
+.button4 {border-radius: 16px;}
+body {font-family: Arial, Helvetica, sans-serif;}
+* {box-sizing: border-box;}
+
+.open-button {
+  background-color: #555;
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  opacity: 0.8;
+  position: fixed;
+  bottom: 23px;
+  right: 28px;
+  width: 280px;
+}
+
+/* The popup form - hidden by default */
+.form-popup {
+  display: none;
+  position: fixed;
+  top: 170px;
+  right:550px;
+  border: 1px solid #f1f1f1;
+  z-index: 2;
+}
+
+/* Add styles to the form container */
+.form-container {
+  max-width: 300px;
+  padding: 10px;
+  background-color: black;
+}
+
+/* Full-width input fields */
+.form-container input[type=text], .form-container input[type=password] {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  border: none;
+  background: #f1f1f1;
+}
+
+/* When the inputs get focus, do something */
+.form-container input[type=text]:focus, .form-container input[type=password]:focus {
+  background-color: #ddd;
+  outline: none;
+}
+
+/* Set a style for the submit/login button */
+.form-container .btn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  margin-bottom:10px;
+  opacity: 0.8;
+}
+.center {
+  margin: auto;
+  width: 30%;
+}
+
+/* Add a red background color to the cancel button */
+.form-container .cancel {
+  background-color: red;
+}
+
+/* Add some hover effects to buttons */
+.form-container .btn:hover, .open-button:hover {
+  opacity: 1;
+}
+</style>
+</head>
+<body>
+<button class="button button4 background3" onclick="location.href='{% url 'control' %}'">CONTROL MODE</button> <br/>
+<button class="button button4 background1"  onclick="openForm()">ADD FACE</button>
+<div class="form-popup" id="myForm">
+
+  <form action="dataset" class="form-container" method="POST" enctype="multipart/form-data">
+      {% csrf_token %}
+    <h1 style ="color:red;" >UPLOAD DATASET </h1>
+
+    <label for="New User Name"><b>name</b></label>
+    <input type="text" placeholder="New User Name" name="foldername" required>
+
+    <input type="file" name="files" multiple="true" /><br/><br/>
+
+    <button type="submit" class="btn">Upload Folder</button>
+    <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+
+  </form>
+</div>
+<script>
+
+function openForm() {
+  document.getElementById("myForm").style.display = "block";
+ }
+ function closeForm() {
+  document.getElementById("myForm").style.display = "none";
+}
+</script>
+<button class="button button4 background2" onclick="openForm1()">DELETE FACE</button>
+<div class="form-popup" id="delete">
+
+  <form action="delete" class="form-container" method="POST" enctype="multipart/form-data">
+      {% csrf_token %}
+    <h1 style ="color:red;" >DELETE DATASET </h1>
+
+    <label for="user name"><b>name</b></label>
+    <input type="text" placeholder="User Name" name="foldername" required>
+
+
+
+    <button type="submit" class="btn">Delete Folder</button>
+    <button type="button" class="btn cancel" onclick="closeForm1()">Close</button>
+
+  </form>
+</div>
+<script>
+function openForm1(){
+  document.getElementById("delete").style.display = "block";
+ }
+ function closeForm1() {
+  document.getElementById("delete").style.display = "none";
+}
+</script>
+</body>
+</html>

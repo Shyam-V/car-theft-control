@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>  AUTOMOBILE SECURITY </title>
+  <link rel="stylesheet"  href="{%  static  '/css/style.css'  %}">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+    <!--Fontawesome CDN-->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+
+</head>
+<body>
+
+<style>
+h1 {text-align: center;
+  font-weight: bold;
+  color:red;
+  position: relative;
+  top:60px;
+}
+
+</style>
+<h1 style ="text-align:center;color:yellow;font-size:50px"> AUTOMOBILE SECURITY MANAGEMENT</h1>
+<div class="container">
+  <div class="d-flex justify-content-center h-100">
+    <div class="card">
+      <div class="card-header">
+        <h3 style="color:yellow";> SIGN IN </h3>
+
+      </div>
+      <div class="card-body">
+        <form action ="login" target="_blank" method= "POST" >
+          {% csrf_token %}
+          <div class="input-group form-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text"><i class="fas fa-user"></i></span>
+            </div>
+            <input type="text" class="form-control" placeholder="Vehicle Id" name="Username">
+            </div>
+          <div class="input-group form-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text"><i class="fas fa-key"></i></span>
+            </div>
+            <input type="password" class="form-control" placeholder="Password" name="Password">
+          </div>
+          <div class="form-group">
+            <div class="center">
+            <input type="submit" value="Login" class="btn float-right login_btn"><br><br>
+             <button  class="btn float-right login_btn">Signup<br>
+             </button>
+            </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>
